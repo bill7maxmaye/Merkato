@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:merkato/router.dart';
 
 import 'constants/global_variables.dart';
+import 'features/auth/screen/auth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,17 +26,8 @@ class MyApp extends StatelessWidget {
           // ,colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           // useMaterial3: true,
           ),
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Center(
-              child: Text("Merkato"),
-            ),
-            // backgroundColor: Colors.cyan,
-          ),
-          body: Column(children: [
-            const Center(child: Text('Merkato')),
-            ElevatedButton(onPressed: () {}, child: Text("bill"))
-          ])),
+      onGenerateRoute: (settings)=>generateRoute(settings),
+      home: const AuthScreen()
     );
   }
 }
