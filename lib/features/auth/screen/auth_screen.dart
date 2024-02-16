@@ -41,11 +41,17 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: GlobalVariables.greyBackgroundColor,
       body: SafeArea(child: Padding(
         padding: EdgeInsets.all(8.0),
-        child: Column(children: [
-           const Text("WELCOME",  style: TextStyle(fontSize: 22, fontWeight:FontWeight.w500 ),),
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          const Text("WELCOME",  style: TextStyle(fontSize: 22, fontWeight:FontWeight.w500 ),),
+            //added sized box
+          SizedBox(height: 10,),
           ListTile(
+            tileColor: _auth == Auth.signup ? GlobalVariables.backgroundColor : GlobalVariables.greyBackgroundColor ,
             title:  Text("Create Account", style: TextStyle(fontWeight: FontWeight.bold),),
-            leading: Radio(activeColor: GlobalVariables.secondaryColor,
+            leading: Radio(
+                activeColor: GlobalVariables.secondaryColor,
                 value: Auth.signup,
                 groupValue: _auth,
                 onChanged: (Auth ? val){
@@ -82,6 +88,8 @@ class _AuthScreenState extends State<AuthScreen> {
              ),
 
           ListTile(
+            tileColor: _auth == Auth.signin ? GlobalVariables.backgroundColor : GlobalVariables.greyBackgroundColor ,
+
             title:  Text("Sign-In", style: TextStyle(fontWeight: FontWeight.bold),),
             leading: Radio(activeColor: GlobalVariables.secondaryColor,
                 value: Auth.signin,
@@ -92,6 +100,30 @@ class _AuthScreenState extends State<AuthScreen> {
                   });
                 }),
           ),
+            if (_auth == Auth.signin)
+              Container(
+                padding: const EdgeInsets.all(8),
+                color: GlobalVariables.backgroundColor ,
+                child: Form(
+                  key: _signInFormKey,
+                  child: Column(
+                    children: [
+
+                      SizedBox(height: 10,),
+                      CustomTextField(controller:
+                      _emailController,
+                        hintText: 'Email',),
+                      SizedBox(height: 10,),
+                      CustomTextField(controller:
+                      _passwordController,
+                        hintText: 'Password',),
+                      SizedBox(height: 10,),
+                      CustomButton(text: 'Sign-In', onTap: (){})
+                    ],
+                  ),
+                ),
+              ),
+
 
         ],),
       ))
