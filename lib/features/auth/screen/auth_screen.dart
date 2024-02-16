@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:merkato/common/widgets/custom_button.dart';
 import 'package:merkato/common/widgets/custom_textField.dart';
 import 'package:merkato/constants/global_variables.dart';
 
@@ -73,6 +74,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     CustomTextField(controller:
                     _passwordController,
                       hintText: 'Password',),
+                    SizedBox(height: 10,),
+                    CustomButton(text: 'Sign-Up', onTap: (){})
                   ],
                  ),
                ),
@@ -88,7 +91,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     _auth = val!;
                   });
                 }),
-          )
+          ),
 
         ],),
       ))
