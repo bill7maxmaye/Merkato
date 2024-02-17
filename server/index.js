@@ -1,5 +1,12 @@
 //IMORT FROM PACKAGES
+
+//require('dotenv').config();
 const express = require ('express');
+const mongoose =require('mongoose')
+
+
+//load environmental variables from .env
+
 
 //IMPORT FROM FILES
 //this just imports it for use
@@ -8,6 +15,7 @@ const authRouter = require("./routes/auth")
 //INITILIZATIONS
 PORT = 3000
 const app = express();
+const MONGODB_URL = "mongodb+srv://bilenmehalek7:merkato@merkato.9wazhsh.mongodb.net/?retryWrites=true&w=majority";
 
 
 //MIDDLEWARE
@@ -15,6 +23,16 @@ const app = express();
 app.use(authRouter);
 
 
+
+//CONNECTIONS
+
+mongoose.connect(MONGODB_URL)
+ .then(()=>{
+     console.log("DB connected")
+ })
+ .catch((e)=>{
+    console.log(e)
+})
 
 
 app.listen(PORT,"0.0.0.0",  ()=>{
