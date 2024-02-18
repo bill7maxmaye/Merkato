@@ -1,4 +1,5 @@
 const express = require("express");
+const bcryptjs = require("bcryptjs");
 const User = require("../models/user");
 
 //to be imported to index.js as middleware
@@ -16,11 +17,14 @@ authRouter.post("/api/signup", async (req, res) => {
         .status(400)
         .json({ msg: "User with the same email already exists" });
     }
+
+    const hashedpassword = bcryptjs.hash(password, 8);
+    console.log(hashedpassword);
     //if user does not exist then create a user in the db
     var user = new User({
       name,
       email,
-      password,
+      password: hashedpassword,
     });
 
     user = await user.save();

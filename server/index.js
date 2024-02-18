@@ -18,7 +18,7 @@ const MONGODB_URL =
 
 //MIDDLEWARE
 //this now makes it functional that the server listening on port 3000, when any request to the specified get request comes it directs it to the authRouter
-app.use(express.json());
+app.use(express.json()); //should be defined before app.use(authRouter)
 app.use(authRouter);
 
 //CONNECTIONS
@@ -32,6 +32,6 @@ mongoose
     console.log(e);
   });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`started server at port ${PORT}`);
 });
