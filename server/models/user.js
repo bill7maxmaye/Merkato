@@ -27,25 +27,6 @@ const userShema = mongoose.Schema({
   password: {
     required: true,
     type: String,
-    //minlength: [6, "Password must be at least 6 characters long"],
-    validate: {
-      validator: (value) => {
-        const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-        return regex.test(value);
-      },
-      message:
-        "Password must be at least 6 characters long and include at least one number and one letter",
-    },
-
-    // validate: {
-    //   validator: (value) => {
-    //     // Password should be at least 6 characters long and contain at least one number and one letter
-    //     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    //     return regex.test(value);
-    //   },
-    //   message:
-    //     "Password must be at least 6 characters long and include at least one number and one letter",
-    // },
   },
 
   address: {

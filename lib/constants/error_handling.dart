@@ -13,7 +13,7 @@ void httpErrorHandler({
     case 200:
       onSuccess();
       break;
-    case 404:
+    case 400:
       showSnackBar(context, jsonDecode(response.body)['msg']);
       break;
 
