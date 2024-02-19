@@ -1,25 +1,27 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:http/http.dart" as http;
 import "package:merkato/constants/utils.dart";
 
-void httpErrorHandler9({
+void httpErrorHandler({
   required http.Response response,
   required BuildContext context,
-  required VoidCallBack onSuccess,
-})
-
-{
-  switch(response.statusCode){
+  required VoidCallback onSuccess,
+}) {
+  switch (response.statusCode) {
     case 200:
       onSuccess();
       break;
     case 404:
-      showSnackBar(context, text)
+      showSnackBar(context, jsonDecode(response.body)['msg']);
       break;
+
     case 500:
-      showSnackBar(context, text)
-s      break;
+      showSnackBar(context, jsonDecode(response.body)['error']);
+      break;
+
     default:
-      showSnackBar(context, text)
+      showSnackBar(context, response.body);
   }
 }

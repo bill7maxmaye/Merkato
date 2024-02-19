@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:merkato/common/widgets/custom_button.dart';
 import 'package:merkato/common/widgets/custom_textField.dart';
 import 'package:merkato/constants/global_variables.dart';
+import 'package:merkato/features/auth/services/auth_service.dart';
 
 enum Auth {
   signin,
@@ -21,6 +22,8 @@ class _AuthScreenState extends State<AuthScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
 
+  final AuthService authService = AuthService();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -31,6 +34,16 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  //a function that gets called when the signup button clicked
+//we dont need to pass the build contetx b/c the widget is stateful widget
+  void signUpUser() {
+    authService.signUpUser(
+        context: context,
+        name: _nameController.text,
+        email: _emailController.text,
+        password: _passwordController.text);
   }
 
   @override
@@ -98,7 +111,13 @@ class _AuthScreenState extends State<AuthScreen> {
                         SizedBox(
                           height: 10,
                         ),
-                        CustomButton(text: 'Sign-Up', onTap: () {})
+                        CustomButton(
+                            text: 'Sign-Up',
+                            onTap: () {
+                              if (_signUpFormKey.currentState!.validate()) {
+                                signUpUser();
+                              }
+                            })
                       ],
                     ),
                   ),
