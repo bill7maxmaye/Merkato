@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+//The userSchema defines the structure of the user
+// data in the MongoDB database.
+
 const userShema = mongoose.Schema({
   name: {
     required: true,
@@ -35,6 +38,9 @@ const userShema = mongoose.Schema({
     type: String,
   },
 });
+
+//The User model is created based on the schema,
+//and it provides an interface for interacting with user data in the database.
 
 const User = mongoose.model("User", userShema);
 module.exports = User;
