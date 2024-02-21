@@ -1,18 +1,29 @@
 import "package:flutter/material.dart";
+import "package:merkato/features/home/screens/home_screen.dart";
 
 import "features/auth/screen/auth_screen.dart";
 
-Route<dynamic> generateRoute(RouteSettings routeSettings){
-  switch(routeSettings.name){
+Route<dynamic> generateRoute(RouteSettings routeSettings) {
+  switch (routeSettings.name) {
     case AuthScreen.routeName:
       return MaterialPageRoute(
-          settings: routeSettings,
-          builder: (_) => const AuthScreen(),);
+        settings: routeSettings,
+        builder: (_) => const AuthScreen(),
+      );
+
+    case HomeScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const HomeScreen(),
+      );
+
     default:
       return MaterialPageRoute(
           settings: routeSettings,
           builder: (_) => const Scaffold(
-  body: Center(child: Text("Page doest not exist"),),
-  ));
+                body: Center(
+                  child: Text("Page doest not exist"),
+                ),
+              ));
   }
 }
