@@ -59,4 +59,15 @@ authRouter.post("/api/signin", async (req, res) => {
   }
 });
 
+authRouter.post("/tokenIsValid", async (req, res) => {
+  try {
+    const token = req.header("x-auth-token");
+    //if there is no token
+    if (!token) return res.json(false);
+    //if there is a token in the req.header verify it with the passwordkey
+    const verified = jwt.verify(token, passwordKey);
+    if (!verified) return res.json(false);
+  } catch (e) {}
+});
+
 module.exports = authRouter;
