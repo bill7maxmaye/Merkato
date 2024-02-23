@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:merkato/features/account/widgets/below_app_bar.dart';
+import 'package:merkato/features/account/widgets/orders.dart';
+import 'package:merkato/features/account/widgets/top_buttons.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -39,7 +41,15 @@ class AccountScreen extends StatelessWidget {
                 ]),
           )),
       body: Column(
-        children: const [BelowAppBar()],
+        children: [
+          BelowAppBar(),
+          SizedBox(height: 20),
+          TopButtons(),
+          SizedBox(
+            height: 20,
+          ),
+          Orders(),
+        ],
       ),
     );
   }
