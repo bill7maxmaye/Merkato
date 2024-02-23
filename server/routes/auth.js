@@ -1,9 +1,12 @@
 const express = require("express");
+
 const bcryptjs = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
 
 //to be imported to index.js as middleware
+
 const authRouter = express.Router();
 
 //ROUTES FOR GET POST UPDTAE DELETE
@@ -67,7 +70,20 @@ authRouter.post("/tokenIsValid", async (req, res) => {
     //if there is a token in the req.header verify it with the passwordkey
     const verified = jwt.verify(token, passwordKey);
     if (!verified) return res.json(false);
-  } catch (e) {}
+    //again check if the verified token has a user associated with it, b/c a random token could turn out to be true when verified with the passwordkey
+    const user = await User.findById(verified.id);
+    //if no user with that token exist return false
+    if (!user) return res.json(false);
+    //if user exists return true and send the user info to the front end
+    return res.json(true);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+authRouter.get("/", auth, async (req, res) => {
+  const user = await User.findById(req.user);
+  res.json({ ...user._doc, token: req.token });
 });
 
 module.exports = authRouter;
