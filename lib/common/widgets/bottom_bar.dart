@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
+import 'package:badges/badges.dart' as badges;
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -14,6 +15,12 @@ class _BottomBarState extends State<BottomBar> {
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
+  void updatePage(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +30,7 @@ class _BottomBarState extends State<BottomBar> {
         unselectedItemColor: GlobalVariables.unselectedNavBarColor,
         backgroundColor: GlobalVariables.backgroundColor,
         iconSize: 28,
+        onTap: updatePage,
         items: [
           //home
           BottomNavigationBarItem(
@@ -67,7 +75,16 @@ class _BottomBarState extends State<BottomBar> {
                                 ? GlobalVariables.selectedNavBarColor
                                 : GlobalVariables.backgroundColor,
                             width: bottomBarBorderWidth))),
-                child: const Icon(Icons.card_travel_outlined),
+                child: const badges.Badge(
+                  badgeAnimation: badges.BadgeAnimation.scale(
+                      toAnimate: true, animationDuration: Duration(seconds: 1)),
+                  badgeStyle: badges.BadgeStyle(
+                      badgeColor: Color.fromARGB(255, 9, 225, 16),
+                      shape: badges.BadgeShape.instagram,
+                      elevation: 0),
+                  badgeContent: Text('64'),
+                  child: Icon(Icons.shopping_cart_outlined),
+                ),
               )),
         ],
       ),
