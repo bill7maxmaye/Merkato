@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:merkato/features/account/screens/account_screen.dart';
+import 'package:merkato/features/home/screens/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -15,6 +17,12 @@ class _BottomBarState extends State<BottomBar> {
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
+  List<Widget> pages = [
+    const HomeScreen(),
+    const AccountScreen(),
+    const Center(child: Text("CART PAGE"))
+  ];
+
   void updatePage(int page) {
     setState(() {
       _page = page;
@@ -24,6 +32,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
