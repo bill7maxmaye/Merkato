@@ -55,8 +55,6 @@ authRouter.post("/api/signin", async (req, res) => {
     }
     const token = jwt.sign({ id: user._id }, "passwordKey");
     res.json({ token, ...user._doc });
-
-    print(token);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -68,7 +66,7 @@ authRouter.post("/tokenIsValid", async (req, res) => {
     //if there is no token
     if (!token) return res.json(false);
     //if there is a token in the req.header verify it with the passwordkey
-    const verified = jwt.verify(token, passwordKey);
+    const verified = jwt.verify(token, "passwordKey");
     if (!verified) return res.json(false);
     //again check if the verified token has a user associated with it, b/c a random token could turn out to be true when verified with the passwordkey
     const user = await User.findById(verified.id);
