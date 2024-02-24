@@ -55,6 +55,24 @@ class _OrdersState extends State<Orders> {
           height: 170,
           padding: EdgeInsets.only(left: 10, right: 0, top: 20),
           child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                return SingleProduct(image: list[index]);
+              }),
+        ),
+
+        //duplicated the orders to display the recent orders
+
+        SizedBox(
+          height: 10,
+        ),
+
+        Container(
+          height: 170,
+          padding: EdgeInsets.only(left: 10, right: 0, top: 20),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemCount: list.length,
               itemBuilder: (context, index) {
                 return SingleProduct(image: list[index]);
