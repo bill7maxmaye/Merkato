@@ -39,7 +39,8 @@ class AccountScreen extends StatelessWidget {
                     ]),
                   ),
                 ]),
-          )),
+          )
+          ),
       body: Column(
         children: [
           BelowAppBar(),
