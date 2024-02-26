@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://192.168.0.147:3000';
+String uri = 'http://10.5.240.130:3000';
 
 class GlobalVariables {
   // COLORS
@@ -36,6 +36,20 @@ class GlobalVariables {
       'title': 'Essentials',
       'image': 'assets/images/essentials.jpeg',
     },
+    {
+      'title': 'Appliances',
+      'image': 'assets/images/appliances.jpeg',
+    },
+    {
+      'title': 'Books',
+      'image': 'assets/images/books.jpeg',
+    },
+    {
+      'title': 'Fashion',
+      'image': 'assets/images/fashion.jpeg',
+    },
+
+//duplicated to test the list builder view
     {
       'title': 'Appliances',
       'image': 'assets/images/appliances.jpeg',
