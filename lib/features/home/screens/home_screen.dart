@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:merkato/features/home/widgets/address_box.dart';
+import 'package:merkato/features/home/widgets/top_categories.dart';
 import 'package:merkato/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ]),
             )),
         body: Column(
-          children: [AddressBox()],
+          children: const [AddressBox(), SizedBox(height: 10), TopCategories()],
         ));
   }
 }
