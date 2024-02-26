@@ -6,7 +6,7 @@ class TopCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 60,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -27,7 +27,13 @@ class TopCategories extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(GlobalVariables.categoryImages[index]['title']!)
+                Text(
+                  GlobalVariables.categoryImages[index]['title']!,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12,
+                  ),
+                )
               ],
             );
           },

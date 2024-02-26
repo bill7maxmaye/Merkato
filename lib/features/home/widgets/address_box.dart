@@ -38,7 +38,7 @@ class AddressBox extends StatelessWidget {
             padding: EdgeInsets.only(top: 2, left: 5, right: 5),
             child: const Icon(
               Icons.arrow_drop_down_outlined,
-              size: 18,
+              size: 26,
             ))
       ]),
     );
