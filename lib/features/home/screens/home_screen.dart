@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:merkato/features/home/widgets/address_box.dart';
 import 'package:merkato/features/home/widgets/carosel_image.dart';
+import 'package:merkato/features/home/widgets/deal_of_dart.dart';
 import 'package:merkato/features/home/widgets/top_categories.dart';
 import 'package:merkato/providers/user_provider.dart';
 import 'package:provider/provider.dart';
@@ -82,14 +83,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   ]),
             )),
-        body: Column(
-          children: const [
-            AddressBox(),
-            SizedBox(height: 10),
-            TopCategories(),
-            SizedBox(height: 10),
-            CarouselImage()
-          ],
+        body: const SingleChildScrollView(
+          child: Column(
+            children: [
+              AddressBox(),
+              SizedBox(height: 10),
+              TopCategories(),
+              SizedBox(height: 10),
+              CarouselImage(),
+              DealOfDay()
+            ],
+          ),
         ));
   }
 }
