@@ -21,7 +21,7 @@ class _DealOfDayState extends State<DealOfDay> {
           ),
         ),
         Image.network(
-            "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNhcnxlbnwwfHwwfHx8MA%3D%3D",
+            "https://images.unsplash.com/photo-1515704089429-fd06e6668458?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvbXB1dGVyfGVufDB8fDB8fHww",
             height: 232,
             fit: BoxFit.fitHeight),
         Container(
