@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:merkato/features/account/screens/account_screen.dart';
+import 'package:merkato/features/admin/screens/admin_screen.dart';
 import 'package:merkato/features/home/screens/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
@@ -20,7 +21,8 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> pages = [
     const HomeScreen(),
     const AccountScreen(),
-    const Center(child: Text("CART PAGE"))
+    const Center(child: Text("CART PAGE")),
+    const AdminScreen()
   ];
 
   void updatePage(int page) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/common/widgets/bottom_bar.dart';
+import 'package:merkato/features/admin/screens/admin_screen.dart';
 import 'package:merkato/features/auth/services/auth_service.dart';
 //import 'package:merkato/features/home/screens/home_screen.dart';
 import 'package:merkato/providers/user_provider.dart';
@@ -49,7 +50,9 @@ class _MyAppState extends State<MyApp> {
             ),
         onGenerateRoute: (settings) => generateRoute(settings),
         home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-            ? const BottomBar()
+            ? Provider.of<UserProvider>(context).user.type == 'user'
+                ? const BottomBar()
+                : AdminScreen()
             : const AuthScreen());
   }
 }
