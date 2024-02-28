@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:merkato/common/widgets/custom_textField.dart';
 import 'package:merkato/constants/global_variables.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -11,7 +12,20 @@ class AddProductScreen extends StatefulWidget {
 }
 
 class _AddProductScreenState extends State<AddProductScreen> {
+  final TextEditingController productNameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  final TextEditingController quantityController = TextEditingController();
+
   @override
+  void dispose() {
+    super.dispose();
+    productNameController.dispose();
+    descriptionController.dispose();
+    priceController.dispose();
+    quantityController.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -57,7 +71,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                 color: Colors.grey.shade400, fontSize: 15),
                           )
                         ],
-                      )))
+                      ))),
+              SizedBox(height: 30),
+              CustomTextField(
+                  controller: productNameController, hintText: 'Product Name')
             ],
           ),
         ),
