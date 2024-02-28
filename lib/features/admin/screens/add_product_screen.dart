@@ -74,7 +74,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       ))),
               SizedBox(height: 30),
               CustomTextField(
-                  controller: productNameController, hintText: 'Product Name')
+                  controller: productNameController, hintText: 'Product Name'),
+              SizedBox(height: 10),
+              CustomTextField(
+                  maxLines: 7,
+                  controller: descriptionController,
+                  hintText: 'Description'),
+              SizedBox(height: 10),
+              CustomTextField(controller: priceController, hintText: 'Price'),
+              SizedBox(height: 10),
+              CustomTextField(
+                  controller: quantityController, hintText: 'Quantity'),
             ],
           ),
         ),
