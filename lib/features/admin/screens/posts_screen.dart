@@ -18,6 +18,7 @@ class _PostsScreenState extends State<PostsScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
+        tooltip: 'Add a new product',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
