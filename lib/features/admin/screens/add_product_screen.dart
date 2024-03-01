@@ -18,7 +18,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController quantityController = TextEditingController();
 
   @override
-
   String category = 'Mobiles';
 
   void dispose() {
@@ -32,9 +31,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
   List<String> productCategories = [
     'Mobiles',
     'Essentials'
-    'Appliances'
-    'Books'
-    'Fashion'
+        'Appliances'
+        'Books'
+        'Fashion'
   ];
 
   Widget build(BuildContext context) {
@@ -102,13 +101,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 child: DropdownButton(
                     value: category,
                     icon: Icon(Icons.keyboard_arrow_down),
-                    items: productCategories.map((String item){
-                          return DropdownMenuItem(child: Text(item));
+                    items: productCategories.map((String item) {
+                      return DropdownMenuItem(value: item, child: Text(item));
                     }).toList(),
-                    onChanged: 
-
-
-                ),
+                    onChanged: (String? newVal) {
+                      setState(() {
+                        category = newVal!;
+                      });
+                    }),
               )
             ],
           ),
