@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:merkato/common/widgets/custom_button.dart';
 import 'package:merkato/common/widgets/custom_textField.dart';
 import 'package:merkato/constants/global_variables.dart';
 
@@ -109,7 +110,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         category = newVal!;
                       });
                     }),
-              )
+              ),
+              SizedBox(height: 10),
+              CustomButton(text: 'Sell Product', onTap: () {})
             ],
           ),
         ),
