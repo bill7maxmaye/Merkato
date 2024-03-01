@@ -18,6 +18,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController quantityController = TextEditingController();
 
   @override
+
+  String category = 'Mobiles';
+
   void dispose() {
     super.dispose();
     productNameController.dispose();
@@ -25,6 +28,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
     priceController.dispose();
     quantityController.dispose();
   }
+
+  List<String> productCategories = [
+    'Mobiles',
+    'Essentials'
+    'Appliances'
+    'Books'
+    'Fashion'
+  ];
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +96,20 @@ class _AddProductScreenState extends State<AddProductScreen> {
               SizedBox(height: 10),
               CustomTextField(
                   controller: quantityController, hintText: 'Quantity'),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: double.infinity,
+                child: DropdownButton(
+                    value: category,
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    items: productCategories.map((String item){
+                          return DropdownMenuItem(child: Text(item));
+                    }).toList(),
+                    onChanged: 
+
+
+                ),
+              )
             ],
           ),
         ),
