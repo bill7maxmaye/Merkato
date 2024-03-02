@@ -15,7 +15,7 @@ void main() {
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
     )
-  ], child: const MyApp()));
+  ], child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         onGenerateRoute: (settings) => generateRoute(settings),
         home: Provider.of<UserProvider>(context).user.token.isNotEmpty
             ? Provider.of<UserProvider>(context).user.type == 'user'
-                ? const BottomBar()
+                ? BottomBar()
                 : AdminScreen()
             : const AuthScreen());
   }

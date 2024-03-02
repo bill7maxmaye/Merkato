@@ -17,10 +17,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
-
-  @override
   String category = 'Mobiles';
-
+  @override
   void dispose() {
     super.dispose();
     productNameController.dispose();
@@ -31,12 +29,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   List<String> productCategories = [
     'Mobiles',
-    'Essentials'
-        'Appliances'
-        'Books'
-        'Fashion'
+    'Essentials',
+    'Appliances',
+    'Books',
+    'Fashion'
   ];
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -46,7 +44,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             flexibleSpace: Container(
                 decoration: const BoxDecoration(
                     gradient: GlobalVariables.appBarGradient)),
-            title: Text(
+            title: const Text(
               'Add Product',
               style: TextStyle(color: Colors.black),
             ),
@@ -71,11 +69,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.folder_open,
                             size: 40,
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Text(
                             'Select Product Image',
                             style: TextStyle(
@@ -83,35 +81,39 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           )
                         ],
                       ))),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               CustomTextField(
                   controller: productNameController, hintText: 'Product Name'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CustomTextField(
                   maxLines: 7,
                   controller: descriptionController,
                   hintText: 'Description'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CustomTextField(controller: priceController, hintText: 'Price'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CustomTextField(
                   controller: quantityController, hintText: 'Quantity'),
               const SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,
                 child: DropdownButton(
-                    value: category,
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    items: productCategories.map((String item) {
-                      return DropdownMenuItem(value: item, child: Text(item));
-                    }).toList(),
-                    onChanged: (String? newVal) {
-                      setState(() {
-                        category = newVal!;
-                      });
-                    }),
+                  value: category,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: productCategories.map((String item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Text(item),
+                    );
+                  }).toList(),
+                  onChanged: (String? newVal) {
+                    setState(() {
+                      category = newVal!;
+                    });
+                  },
+                ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CustomButton(text: 'Sell Product', onTap: () {})
             ],
           ),
