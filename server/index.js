@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 //IMPORT FROM FILES
 //this just imports it for use
 const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
 
 //INITILIZATIONS
 PORT = 3000;
@@ -19,6 +20,7 @@ const MONGODB_URL =
 //this now makes it functional that the server listening on port 3000, when any request to the specified get request comes it directs it to the authRouter
 app.use(express.json()); //should be defined before app.use(authRouter)
 app.use(authRouter);
+app.use(adminRouter);
 
 //CONNECTIONS
 
