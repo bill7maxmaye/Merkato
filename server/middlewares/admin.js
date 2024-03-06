@@ -16,13 +16,15 @@ const admin = async (req, res, next) => {
 
     const user = await User.findById(verified.id);
 
-    if (user.type == "'user" || user.type == "seller")
+    if (user.type == "user" || user.type == "seller")
       return res.status(401).json({ msg: "You are not admin" });
 
     req.user = verified.id;
-    req.tokem = token;
+    req.token = token;
     next();
   } catch (rr) {
     res.status(500).json({ error: rr.message });
   }
 };
+
+module.exports = admin;

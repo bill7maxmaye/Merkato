@@ -7,6 +7,7 @@ import 'package:merkato/common/widgets/custom_button.dart';
 import 'package:merkato/common/widgets/custom_textField.dart';
 import 'package:merkato/constants/global_variables.dart';
 import 'package:merkato/constants/utils.dart';
+import 'package:merkato/features/admin/services/admin_services.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
@@ -22,8 +23,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
 
+  final AdminServices adminService = AdminServices();
+
   String category = 'Mobiles';
   List<File> images = [];
+  final _addProductFormKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -41,6 +45,21 @@ class _AddProductScreenState extends State<AddProductScreen> {
     'Books',
     'Fashion'
   ];
+
+  void sellProduct() {
+    //this line validates if each field is not empty
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminService.sellProduct(
+          context: context,
+          name: productNameController.text,
+          description: descriptionController.text,
+          price: double.parse(priceController.text),
+          quantity: double.parse(quantityController.text),
+          category: category,
+          images: images);
+    }
+  }
+
   void selectImages() async {
     var res = await pickImages();
     setState(() {
@@ -65,6 +84,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           )),
       body: SingleChildScrollView(
           child: Form(
+        key: _addProductFormKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
@@ -146,7 +166,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              CustomButton(text: 'Sell Product', onTap: () {}),
+              CustomButton(text: 'Sell Product', onTap: sellProduct),
               const SizedBox(height: 20),
             ],
           ),
