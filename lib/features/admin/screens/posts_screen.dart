@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merkato/common/widgets/loader.dart';
+import 'package:merkato/features/account/widgets/single_product.dart';
 import 'package:merkato/features/admin/screens/add_product_screen.dart';
 import 'package:merkato/features/admin/services/admin_services.dart';
 import 'package:merkato/models/product.dart';
@@ -35,10 +36,35 @@ class _PostsScreenState extends State<PostsScreen> {
     return products == null
         ? const Loader()
         : Scaffold(
-            body: Center(
-                child: Text(
-              "this is the post page where the admin adds the products to be posted",
-            )),
+            body: GridView.builder(
+                itemCount: products!.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  final productData = products![index];
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 140,
+                        child: SingleProduct(image: productData.images[0]),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                              child: Text(
+                            productData.name,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          )),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.delete_outline))
+                        ],
+                      )
+                    ],
+                  );
+                }),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 navigateToAddProduct();
